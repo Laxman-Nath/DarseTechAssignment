@@ -1,0 +1,16 @@
+INDEX VERSION 1.134+D:\DarseTechAssignment\.metadata\.plugins\org.eclipse.jdt.core
+3413270776.index
+1865797976.index
+4065636880.index
+850518059.index
+431963623.index
+3569253752.index
+2919921501.index
+1839980660.index
+2000151155.index
+1932748750.index
+1827116732.index
+2144747299.index
+2969247335.index
+3723703621.index
+1149303679.index
