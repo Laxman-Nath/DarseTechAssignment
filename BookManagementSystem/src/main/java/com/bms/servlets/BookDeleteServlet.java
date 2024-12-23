@@ -11,7 +11,7 @@ import com.bms.entities.Book;
 import com.bms.services.BookService;
 import com.bms.services.BookServiceImpl;
 
-@WebServlet("/BookDeleteServlet")
+@WebServlet("/deleteBook")
 public class BookDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   private BookService bookService=new BookServiceImpl();

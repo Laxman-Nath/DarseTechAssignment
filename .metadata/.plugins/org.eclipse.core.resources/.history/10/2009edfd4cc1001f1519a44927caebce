@@ -1,0 +1,80 @@
+package com.bms.swagger;
+
+import java.util.Arrays;
+
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.Operation;
+import io.swagger.v3.oas.models.PathItem;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.media.Content;
+import io.swagger.v3.oas.models.media.IntegerSchema;
+import io.swagger.v3.oas.models.media.MediaType;
+import io.swagger.v3.oas.models.media.ObjectSchema;
+import io.swagger.v3.oas.models.media.StringSchema;
+import io.swagger.v3.oas.models.parameters.Parameter;
+import io.swagger.v3.oas.models.parameters.QueryParameter;
+import io.swagger.v3.oas.models.parameters.RequestBody;
+import io.swagger.v3.oas.models.responses.ApiResponses;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
+
+@WebListener
+public class OpenApiContextListener implements ServletContextListener {
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+		OpenAPI openAPI = new OpenAPI()
+				.info(new Info().title("Book API").description("API for managing books").version("1.0.0"));
+
+		openAPI.path("/addBook",
+				new PathItem()
+						.post(new Operation().summary("Add book to database")
+								.description(
+										"This endpoint will store the book in the database.")
+								.requestBody(
+										new RequestBody().description("The book to add").required(true)
+												.content(
+														new Content().addMediaType("application/json",
+																new MediaType().schema(new ObjectSchema()
+																		.addProperty("name",
+																				new StringSchema().description(
+																						"Name of the book"))
+																		.addProperty("isbn",
+																				new StringSchema().description(
+																						"ISBN of the book"))
+
+																		.required(Arrays.asList("name", "isbn"))))))
+
+						).get(new Operation().summary("Show form for adding book")
+								.description("This endpoint displays a form for adding a new book.")));
+
+		openAPI.path("/deleteBook", new PathItem().get(new Operation().summary("Delete book from database")
+				.description("This endpoint will delete a book from the database by its unique ID.")
+				.parameters(Arrays.asList(new QueryParameter() // Define the query parameter for "id"
+						.name("id").description("The unique identifier of the book to be deleted").required(true) // Specify
+																													// that
+																													// "id"
+																													// is
+																													// required
+						.schema(new IntegerSchema())
+				)).responses(new ApiResponses().addApiResponse("200", new ApiResponse().description("Book deleted"))
+						.addApiResponse("500", new ApiResponse().description("Error deleting book")))));
+		openAPI.path("/editBook",
+				new PathItem()
+						.post(new Operation().summary("edit book in database")
+								.description("This endpoint will edit book in datbase."))
+						.get(new Operation().summary("show form for editing book")
+								.description("This endpoint display form for editing book .")));
+
+		openAPI.path("/viewBooks", new PathItem().get(new Operation().summary("show all book from database")
+				.description("This endpoint will display all book from database .")));
+		sce.getServletContext().setAttribute("openAPI", openAPI);
+	}
+
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
+
+	}
+}

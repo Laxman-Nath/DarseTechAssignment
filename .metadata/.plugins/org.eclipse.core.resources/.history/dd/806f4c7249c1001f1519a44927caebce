@@ -1,0 +1,43 @@
+package com.bms.swagger;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.Operation;
+import io.swagger.v3.oas.models.PathItem;
+import io.swagger.v3.oas.models.info.Info;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
+
+@WebListener
+public class OpenApiContextListener implements ServletContextListener {
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+		OpenAPI openAPI = new OpenAPI()
+				.info(new Info().title("Book API").description("API for managing books").version("1.0.0"));
+
+		openAPI.path("/addBook",
+				new PathItem()
+						.post(new Operation().summary("add book to database")
+								.description("This endpoint will store book to datbase."))
+						.get(new Operation().summary("show form for adding book")
+								.description("This endpoint display form for adding new book .")));
+
+		openAPI.path("/BookDeleteServlet", new PathItem().get(new Operation().summary("delete book from database")
+				.description("This endpoint display form will delete book from database .")));
+		openAPI.path("/BookEditServlet",
+				new PathItem()
+						.post(new Operation().summary("edit book in database")
+								.description("This endpoint will edit book in datbase."))
+						.get(new Operation().summary("show form for editing book")
+								.description("This endpoint display form for editing book .")));
+		
+		openAPI.path("/viewBooks", new PathItem().get(new Operation().summary("show all book from database")
+				.description("This endpoint will display book from database .")));
+		sce.getServletContext().setAttribute("openAPI", openAPI);
+	}
+
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
+
+	}
+}

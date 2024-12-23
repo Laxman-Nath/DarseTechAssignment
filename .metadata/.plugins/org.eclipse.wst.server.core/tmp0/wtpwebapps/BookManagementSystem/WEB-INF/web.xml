@@ -11,4 +11,18 @@
 		<welcome-file>home.jsp</welcome-file>
 	</welcome-file-list>
 
+	<servlet>
+		<servlet-name>swagger-ui</servlet-name>
+		<servlet-class>org.webjars.servlet.WebjarsServlet</servlet-class>
+		<init-param>
+			<param-name>webjars.path</param-name>
+			<param-value>/webjars</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>swagger-ui</servlet-name>
+		<url-pattern>/swagger-ui/*</url-pattern>
+	</servlet-mapping>
+
 </web-app>

@@ -13,7 +13,9 @@
 		style="height: 100vh;">
 		<h1>Select any option</h1>
 		<a href="addBook" class="btn btn-primary ">Add Book</a><br /> <a
-			href="viewBooks" class="btn btn-secondary">View All Books</a>
+			href="viewBooks" class="btn btn-secondary">View All Books</a><br />
+			<a
+			href="swagger.jsp" class="btn btn-success">View Api Docs</a>
 	</div>
 	
 	

@@ -56,9 +56,9 @@
 										<td>${book.name}</td>
 										<td>${book.isbn }</td>
 
-										<td><a href="BookEditServlet?id=${book.id }"
+										<td><a href="editBook?id=${book.id }"
 											class="btn btn-success">Edit</a> <a
-											href="BookDeleteServlet?id=${book.id }"
+											href="deleteBook?id=${book.id }"
 											class="btn btn-danger">Delete</a></td>
 
 									</tr>

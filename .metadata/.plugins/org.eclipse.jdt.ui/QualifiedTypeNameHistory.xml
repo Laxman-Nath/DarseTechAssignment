@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.Parameters"/>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.models.parameters.Parameter"/>
+    <fullyQualifiedTypeName name="org.eclipse.tags.shaded.org.apache.xalan.lib.sql.QueryParameter"/>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.models.responses.ApiResponses"/>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.responses.ApiResponse"/>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.models.media.IntegerSchema"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.models.parameters.QueryParameter"/>
+</qualifiedTypeNameHistroy>
